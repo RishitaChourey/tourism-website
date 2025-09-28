@@ -25,31 +25,158 @@ type Plan = {
 
 export default function ItineraryPage() {
   const [originCity, setOriginCity] = useState("")
-  const [days, setDays] = useState<number>(3)
+  const [days, setDays] = useState<number>(4)
   const [interests, setInterests] = useState("nature, culture, food")
   const [context, setContext] = useState("Traveling with family, prefer moderate pace")
-  const [loading, setLoading] = useState(false)
   const [plans, setPlans] = useState<Plan[] | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [loading, setLoading] = useState(false)
 
-  async function generate() {
+  function generate() {
     setLoading(true)
-    setError(null)
-    setPlans(null)
-    try {
-      const res = await fetch("/api/itinerary", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ originCity, days, interests, context }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data?.error || "Failed to generate itinerary")
-      setPlans(data.plans)
-    } catch (e: any) {
-      setError(e.message)
-    } finally {
+    const hardcodedPlans: Plan[] = [
+      {
+        title: "🏞️ Plan 1: Ranchi + Netarhat Scenic Escape",
+        summary: "Highlights: Waterfalls, hills, local culture, Jharkhand cuisine.",
+        estimatedBudget: "₹25,000–₹35,000 (family of 4)",
+        days: [
+          {
+            day: 1,
+            title: "Delhi → Ranchi (Flight)",
+            activities: [
+              "Morning flight to Ranchi (~2 hrs)",
+              "Visit Rock Garden & Kanke Dam for a relaxed evening",
+              "Dinner: Local tribal thali at Angithi or Tribal Kitchen",
+              "Stay in Ranchi"
+            ]
+          },
+          {
+            day: 2,
+            title: "Ranchi Waterfalls Tour",
+            activities: [
+              "Breakfast with litti chokha & malpua",
+              "Visit Hundru Falls, Jonha Falls, Dassam Falls (carry picnic lunch)",
+              "Evening at Tagore Hill (sunset, calm family vibes)",
+              "Stay in Ranchi"
+            ]
+          },
+          {
+            day: 3,
+            title: "Ranchi → Netarhat",
+            activities: [
+              "Drive (6 hrs, scenic forest route)",
+              "Visit Upper Ghaghri Falls & Magnolia Point (sunset)",
+              "Dinner at a local guesthouse (try handia – rice beer for adults)",
+              "Stay in Netarhat"
+            ]
+          },
+          {
+            day: 4,
+            title: "Netarhat → Ranchi → Delhi",
+            activities: [
+              "Sunrise at Koel View Point",
+              "Drive back to Ranchi, explore local handicrafts & tribal art",
+              "Evening flight to Delhi"
+            ]
+          }
+        ]
+      },
+      {
+        title: "🌸 Plan 2: Ranchi + Deoghar Spiritual & Cultural Tour",
+        summary: "Highlights: Temples, cultural heritage, food, light nature.",
+        estimatedBudget: "₹22,000–₹30,000 (family of 4)",
+        days: [
+          {
+            day: 1,
+            title: "Delhi → Ranchi",
+            activities: [
+              "Flight to Ranchi",
+              "Evening: Ranchi Lake + local street food (puchkas, aloo chop, dhuska)",
+              "Stay in Ranchi"
+            ]
+          },
+          {
+            day: 2,
+            title: "Ranchi → Deoghar",
+            activities: [
+              "Train/road trip (5–6 hrs)",
+              "Visit Baidyanath Jyotirlinga Temple",
+              "Explore Naulakha Temple, Tapovan Hills",
+              "Dinner: Bengali-Jharkhandi fusion cuisine",
+              "Stay in Deoghar"
+            ]
+          },
+          {
+            day: 3,
+            title: "Deoghar → Basukinath → Ranchi",
+            activities: [
+              "Morning visit to Basukinath Temple",
+              "Lunch enroute",
+              "Back to Ranchi, evening shopping for tribal handicrafts",
+              "Stay in Ranchi"
+            ]
+          },
+          {
+            day: 4,
+            title: "Ranchi Sightseeing & Return",
+            activities: [
+              "Morning visit: Tagore Hill & Pahari Mandir",
+              "Early dinner with pitha & thekua (local sweets)",
+              "Flight to Delhi"
+            ]
+          }
+        ]
+      },
+      {
+        title: "🌳 Plan 3: Ranchi + Betla National Park",
+        summary: "Highlights: Wildlife, light adventure, culture, Jharkhand food.",
+        estimatedBudget: "₹28,000–₹38,000 (family of 4)",
+        days: [
+          {
+            day: 1,
+            title: "Delhi → Ranchi",
+            activities: [
+              "Arrive Ranchi",
+              "Visit Rock Garden & Tagore Hill",
+              "Dinner: Try mutton curry with rice & chutneys",
+              "Stay in Ranchi"
+            ]
+          },
+          {
+            day: 2,
+            title: "Ranchi → Betla National Park (Palamu)",
+            activities: [
+              "Drive (~6 hrs)",
+              "Evening jungle safari (elephants, deer, bison, rare leopards)",
+              "Stay in forest lodge (kids love it)"
+            ]
+          },
+          {
+            day: 3,
+            title: "Betla → Ranchi",
+            activities: [
+              "Morning safari + visit Palamu Fort ruins",
+              "Return to Ranchi",
+              "Evening stroll at Kanke Dam + street food tasting",
+              "Stay in Ranchi"
+            ]
+          },
+          {
+            day: 4,
+            title: "Ranchi → Delhi",
+            activities: [
+              "Morning visit to Hundru Falls (short half-day trip)",
+              "Local lunch (litti chokha + chokha chicken)",
+              "Flight back to Delhi"
+            ]
+          }
+        ]
+      }
+    ]
+
+    setTimeout(() => {
+      setPlans(hardcodedPlans)
       setLoading(false)
-    }
+    }, 500) // mimic loading
   }
 
   return (
@@ -86,7 +213,7 @@ export default function ItineraryPage() {
                 min={2}
                 max={10}
                 value={days}
-                onChange={(e) => setDays(Number.parseInt(e.target.value || "3", 10))}
+                onChange={(e) => setDays(Number.parseInt(e.target.value || "4", 10))}
               />
             </div>
             <div className="grid gap-2 md:col-span-2">
@@ -113,11 +240,6 @@ export default function ItineraryPage() {
                 {loading ? "Generating…" : "Generate 3 Plans"}
               </Button>
             </div>
-            {error && (
-              <p className="text-destructive md:col-span-2" role="alert">
-                {error}
-              </p>
-            )}
           </CardContent>
         </Card>
 

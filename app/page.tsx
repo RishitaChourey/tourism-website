@@ -93,39 +93,43 @@ export default function HomePage() {
         <FeaturedDestinations />
       </section>
 
-      {/* Immersive Media Section */}
-      <section className="bg-muted">
-        <div className="mx-auto max-w-6xl px-4 py-12">
-          <header className="mb-6">
-            <h2 className="text-2xl md:text-3xl font-semibold text-balance">Immersive 360° Views & Travel Vlogs</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Experience Jharkhand before you go. Enjoy 360° videos and authentic vlogs from travelers and creators.
+     {/* Immersive Media Section */}
+    <section className="bg-muted">
+      <div className="mx-auto max-w-6xl px-4 py-12">
+        <header className="mb-6">
+          <h2 className="text-2xl md:text-3xl font-semibold text-balance">
+            Immersive 360° Views & Travel Vlogs
+          </h2>
+          <p className="text-muted-foreground leading-relaxed">
+            Experience Jharkhand before you go. Enjoy 360° videos and authentic vlogs from travelers and creators.
+          </p>
+        </header>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="flex flex-col gap-3">
+            <h3 className="text-lg font-medium">360° Virtual Tours</h3>
+            <YouTubeEmbed videoId="C7Kvt0bV3TA" title="Enjoy the delicacies of Jharkhand" />
+            <p className="text-sm text-muted-foreground">
+              Savor authentic tribal flavors and traditional dishes that capture the essence of Jharkhand’s rich culinary heritage.
             </p>
-          </header>
+          </div>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="flex flex-col gap-3">
-              <h3 className="text-lg font-medium">360° Virtual Tours</h3>
-              <YouTubeEmbed src={youtubeSearchEmbed("Jharkhand 360 video")} title="Jharkhand 360 degree videos" />
-              <p className="text-sm text-muted-foreground">
-                Explore panoramic experiences from places like Netarhat, Patratu Valley, Betla, and more.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3">
-              <h3 className="text-lg font-medium">Travel Vlogs</h3>
-              <YouTubeEmbed src={youtubeSearchEmbed("Jharkhand travel vlog")} title="Jharkhand travel vlogs" />
-              <p className="text-sm text-muted-foreground">
-                Watch real journeys to waterfalls like Hundru and spiritual hubs like Deoghar to plan your trip better.
-              </p>
-            </div>
+          <div className="flex flex-col gap-3">
+            <h3 className="text-lg font-medium">Travel Vlogs</h3>
+            <YouTubeEmbed videoId="xHXM7m9Xd8M" title="Scenic Drone view of Jharkhand" />
+            <p className="text-sm text-muted-foreground">
+              A breathtaking aerial glimpse capturing Jharkhand’s lush forests, rolling hills, and majestic waterfalls from above.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-12">
-        <YouTubeEmbed videoId="dQw4w9WgXcQ" title="Featured Jharkhand travel video" />
-      </section>
+    {/* Featured Video Section */}
+    <section className="mx-auto max-w-6xl px-4 py-12">
+      <YouTubeEmbed videoId="eDIJv93S_tQ" title="Featured Jharkhand Travel Video" />
+    </section>
+
 
       {/* Attach chat widget as floating panel */}
       <ChatWidget />
