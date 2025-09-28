@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { DESTINATIONS } from "@/lib/destinations"
+import CommonHeader from "@/components/common-header"
 
 export const metadata = {
   title: "Destinations | Jharkhand Tourism",
@@ -49,26 +50,29 @@ function DestinationCard({
 
 export default function DestinationsPage() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10">
-      <header className="mb-6">
-        <h1 className="text-3xl font-semibold text-balance">Top Destinations in Jharkhand</h1>
-        <p className="text-muted-foreground">
-          Explore highlights including Netarhat, Patratu, Betla National Park, Hundru Falls, and Deoghar.
-        </p>
-      </header>
+    <div>
+      <CommonHeader />
+      <main className="mx-auto max-w-6xl px-4 py-10">
+        <header className="mb-6">
+          <h1 className="text-3xl font-semibold text-balance">Top Destinations in Jharkhand</h1>
+          <p className="text-muted-foreground">
+            Explore highlights including Netarhat, Patratu, Betla National Park, Hundru Falls, and Deoghar.
+          </p>
+        </header>
 
-      <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {DESTINATIONS.map((d) => (
-          <DestinationCard
-            key={d.slug}
-            slug={d.slug}
-            name={d.name}
-            short={d.shortDescription}
-            img={d.heroImage}
-            bestMonths={d.bestTime.months}
-          />
-        ))}
-      </section>
-    </main>
+        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {DESTINATIONS.map((d) => (
+            <DestinationCard
+              key={d.slug}
+              slug={d.slug}
+              name={d.name}
+              short={d.shortDescription}
+              img={d.heroImage}
+              bestMonths={d.bestTime.months}
+            />
+          ))}
+        </section>
+      </main>
+    </div>
   )
 }

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import CommonHeader from "@/components/common-header"
 
 export default function PaymentsPage() {
   const sp = useSearchParams()
@@ -35,26 +36,33 @@ export default function PaymentsPage() {
   }, [ref])
 
   return (
-    <main className="mx-auto max-w-2xl px-4 py-8 space-y-6">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-bold">Payments</h1>
-        <p className="text-muted-foreground">Booking Reference: {ref || "N/A"}</p>
-      </header>
+    <div>
+      <CommonHeader />
+      <main className="mx-auto max-w-2xl px-4 py-8 space-y-6">
+        <header className="space-y-2">
+          <h1 className="text-3xl font-bold">Payments</h1>
+          <p className="text-muted-foreground">Booking Reference: {ref || "N/A"}</p>
+        </header>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Complete Payment</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <p className="text-sm text-muted-foreground">
-            Use the button below to simulate a payment. Integrate your real provider later.
-          </p>
-          <Button onClick={pay} disabled={!ref || status === "processing"} className="bg-accent text-accent-foreground">
-            {status === "processing" ? "Processing…" : "Pay Now"}
-          </Button>
-          {message && <p className={status === "failed" ? "text-destructive" : ""}>{message}</p>}
-        </CardContent>
-      </Card>
-    </main>
+        <Card>
+          <CardHeader>
+            <CardTitle>Complete Payment</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Use the button below to simulate a payment. Integrate your real provider later.
+            </p>
+            <Button
+              onClick={pay}
+              disabled={!ref || status === "processing"}
+              className="bg-accent text-accent-foreground"
+            >
+              {status === "processing" ? "Processing…" : "Pay Now"}
+            </Button>
+            {message && <p className={status === "failed" ? "text-destructive" : ""}>{message}</p>}
+          </CardContent>
+        </Card>
+      </main>
+    </div>
   )
 }

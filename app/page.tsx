@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import ChatWidget from "@/components/chat-widget"
 import FeaturedDestinations from "@/components/featured-destinations"
 import YouTubeEmbed, { youtubeSearchEmbed } from "@/components/youtube-embed"
+import CommonHeader from "@/components/common-header"
 
 function FeatureCard({
   title,
@@ -37,30 +38,7 @@ function FeatureCard({
 export default function HomePage() {
   return (
     <main>
-      <header className="border-b">
-        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="font-semibold">
-            Jharkhand Tourism
-          </Link>
-          <nav className="flex items-center gap-3">
-            <Link href="/itinerary" className="underline-offset-4 hover:underline">
-              Itinerary AI
-            </Link>
-            <Link href="/destinations" className="underline-offset-4 hover:underline">
-              Destinations
-            </Link>
-            <Link href="/marketplace" className="underline-offset-4 hover:underline">
-              Marketplace
-            </Link>
-            <Link href="/bookings" className="underline-offset-4 hover:underline">
-              Bookings
-            </Link>
-            <Button asChild variant="default" className="bg-primary text-primary-foreground">
-              <Link href="/mobile">Get the App</Link>
-            </Button>
-          </nav>
-        </div>
-      </header>
+      <CommonHeader />
 
       <section className={cn("bg-primary text-primary-foreground")}>
         <div className="mx-auto max-w-6xl px-4 py-16 grid gap-6 md:grid-cols-2 items-center">
@@ -77,7 +55,7 @@ export default function HomePage() {
                 <Link href="/itinerary">Plan with AI</Link>
               </Button>
               <Button asChild size="lg" variant="secondary">
-                <Link href="/marketplace">Meet Local Guides</Link>
+                <Link href="/guides">Meet Local Guides</Link>
               </Button>
             </div>
           </div>
@@ -104,8 +82,8 @@ export default function HomePage() {
           href="/bookings"
         />
         <FeatureCard
-          title="Verified Marketplace"
-          description="Book certified guides and buy directly from local artisans with digital certificates."
+          title="Craftsmen Marketplace"
+          description="Buy authentic handcrafted products directly from local artisans with rich cultural history."
           href="/marketplace"
         />
       </section>
