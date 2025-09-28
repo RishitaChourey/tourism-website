@@ -107,7 +107,7 @@ export default function HomePage() {
 
         <div className="grid gap-6 md:grid-cols-2">
           <div className="flex flex-col gap-3">
-            <h3 className="text-lg font-medium">360° Virtual Tours</h3>
+            <h3 className="text-lg font-medium">Enjoy the delicacies of Jharkhand</h3>
             <YouTubeEmbed videoId="C7Kvt0bV3TA" title="Enjoy the delicacies of Jharkhand" />
             <p className="text-sm text-muted-foreground">
               Savor authentic tribal flavors and traditional dishes that capture the essence of Jharkhand’s rich culinary heritage.
@@ -115,7 +115,7 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h3 className="text-lg font-medium">Travel Vlogs</h3>
+            <h3 className="text-lg font-medium">Scenic Drone view of Jharkhand</h3>
             <YouTubeEmbed videoId="xHXM7m9Xd8M" title="Scenic Drone view of Jharkhand" />
             <p className="text-sm text-muted-foreground">
               A breathtaking aerial glimpse capturing Jharkhand’s lush forests, rolling hills, and majestic waterfalls from above.
