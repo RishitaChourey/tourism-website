@@ -4,6 +4,9 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
+import ChatWidget from "@/components/chat-widget"
+import FeaturedDestinations from "@/components/featured-destinations"
+import YouTubeEmbed, { youtubeSearchEmbed } from "@/components/youtube-embed"
 
 function FeatureCard({
   title,
@@ -43,6 +46,9 @@ export default function HomePage() {
             <Link href="/itinerary" className="underline-offset-4 hover:underline">
               Itinerary AI
             </Link>
+            <Link href="/destinations" className="underline-offset-4 hover:underline">
+              Destinations
+            </Link>
             <Link href="/marketplace" className="underline-offset-4 hover:underline">
               Marketplace
             </Link>
@@ -77,9 +83,10 @@ export default function HomePage() {
           </div>
           <div className="h-64 md:h-80 rounded-lg overflow-hidden">
             <img
-              src="/jharkhand-landscape-waterfalls-and-forests.jpg"
+              src="/jharkhand-landscape-montage-with-waterfalls-and-fo.jpg"
               alt="Jharkhand landscape with waterfalls and forests"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover rounded-lg border"
+              loading="eager"
             />
           </div>
         </div>
@@ -102,6 +109,48 @@ export default function HomePage() {
           href="/marketplace"
         />
       </section>
+
+      {/* Featured Destinations Section */}
+      <section className="mx-auto max-w-6xl px-4 py-12">
+        <FeaturedDestinations />
+      </section>
+
+      {/* Immersive Media Section */}
+      <section className="bg-muted">
+        <div className="mx-auto max-w-6xl px-4 py-12">
+          <header className="mb-6">
+            <h2 className="text-2xl md:text-3xl font-semibold text-balance">Immersive 360° Views & Travel Vlogs</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Experience Jharkhand before you go. Enjoy 360° videos and authentic vlogs from travelers and creators.
+            </p>
+          </header>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="flex flex-col gap-3">
+              <h3 className="text-lg font-medium">360° Virtual Tours</h3>
+              <YouTubeEmbed src={youtubeSearchEmbed("Jharkhand 360 video")} title="Jharkhand 360 degree videos" />
+              <p className="text-sm text-muted-foreground">
+                Explore panoramic experiences from places like Netarhat, Patratu Valley, Betla, and more.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <h3 className="text-lg font-medium">Travel Vlogs</h3>
+              <YouTubeEmbed src={youtubeSearchEmbed("Jharkhand travel vlog")} title="Jharkhand travel vlogs" />
+              <p className="text-sm text-muted-foreground">
+                Watch real journeys to waterfalls like Hundru and spiritual hubs like Deoghar to plan your trip better.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-12">
+        <YouTubeEmbed videoId="dQw4w9WgXcQ" title="Featured Jharkhand travel video" />
+      </section>
+
+      {/* Attach chat widget as floating panel */}
+      <ChatWidget />
 
       <footer className="border-t">
         <div className="mx-auto max-w-6xl px-4 py-8 text-sm flex items-center justify-between">
